@@ -23,16 +23,6 @@ namespace NikonovAV.HM.BlowfishCrypt
 
         public void BlowfishDecrypt(BlowfishContext context, ref UInt32 left, ref UInt32 right)
         {
-            /*
-            left ^= context.PKeys[17];
-            right ^= context.PKeys[16];
-            for (int i = 15; i >-1; i--)
-            {
-                left ^= context.PKeys[i];
-                right ^= FeistelFunc(left, context);
-                Swap(ref left, ref right);
-            }
-            Swap(ref left, ref right);*/
             for (int i = 17; i > 1; i--)
             {
                 left ^= context.PKeys[i];
@@ -61,11 +51,8 @@ namespace NikonovAV.HM.BlowfishCrypt
             halfBlock >>= 8;
             byte x1 = (byte)(halfBlock & 0xFF);
 
-            uint result = (uint)(((((ulong)context.SKeys[0][x1] + (ulong)context.SKeys[1][x2]) % 0xFFFFFFFF) ^ (ulong)context.SKeys[2][x3]) + (ulong)context.SKeys[3][x4]) % 0xFFFFFFFF;
+            uint result = ((context.SKeys[0][x1] + context.SKeys[1][x2]) ^ context.SKeys[2][x3]) + context.SKeys[3][x4];
 
-            /*uint result = ((context.SKeys[0][(byte)((input >> 24) & 0xFF)] + 
-                context.SKeys[1][(byte)((input >> 16) & 0xFF)]) ^ context.SKeys[2][(byte)((input >> 8) & 0xFF)]) + 
-                context.SKeys[3][(byte)(input & 0xFF)];*/
             return result;
         }
 
