@@ -47,6 +47,7 @@ namespace NikonovAV.HM.BlowfishCrypt.Test
         [TestMethod]
         public void EncryptDecryptArray()
         {
+            #region init
             int dataLength = 13107200;
             ulong[] dataArray = new ulong[dataLength];
             ulong[] originalDataArray = new ulong[dataLength];
@@ -62,10 +63,16 @@ namespace NikonovAV.HM.BlowfishCrypt.Test
                 dataArray[i] = (l << 32) | r;
                 originalDataArray[i] = dataArray[i];
             }
+            #endregion
 
             Blowfish blowfish = new Blowfish(key);
 
             blowfish.EncryptArray(dataArray);
+
+            for (var i = 0; i < dataLength; i++)
+            {
+                Assert.IsFalse(dataArray[i] == originalDataArray[i]);
+            }
 
             blowfish.DecryptArray(dataArray);
 
