@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,14 @@ namespace NikonovAV.HM.BlowfishCrypt
             context = new BlowfishContext(key);
             blowFeistel = new BlowFeistel();
             blowFeistel.CryptPkeys(context);
+        }
+
+        public void Encrypt(Stream stream)
+        {
+        }
+
+        public void Decrypt(Stream stream)
+        {
         }
 
         public ulong[] EncryptArray(ulong[] data)
