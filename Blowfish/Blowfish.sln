@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NikonovAV.HM.BlowfishCrypt"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NikonovAV.HM.BlowfishCrypt.Test", "..\Blowfish.Test\NikonovAV.HM.BlowfishCrypt.Test.csproj", "{C4534CF5-510B-4805-A2BA-18401AB3940E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NikonovAV.HM.Container", "..\NikonovAV.HM.Container\NikonovAV.HM.Container.csproj", "{14DE541C-0672-481E-A07C-5CD9B7AA64C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NikonovAV.HM.Container.Test", "NikonovAV.HM.Container.Test\NikonovAV.HM.Container.Test.csproj", "{65ACD5A6-B872-4D00-A353-E631F8FD27B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{C4534CF5-510B-4805-A2BA-18401AB3940E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4534CF5-510B-4805-A2BA-18401AB3940E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4534CF5-510B-4805-A2BA-18401AB3940E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14DE541C-0672-481E-A07C-5CD9B7AA64C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14DE541C-0672-481E-A07C-5CD9B7AA64C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14DE541C-0672-481E-A07C-5CD9B7AA64C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14DE541C-0672-481E-A07C-5CD9B7AA64C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65ACD5A6-B872-4D00-A353-E631F8FD27B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65ACD5A6-B872-4D00-A353-E631F8FD27B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65ACD5A6-B872-4D00-A353-E631F8FD27B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65ACD5A6-B872-4D00-A353-E631F8FD27B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
