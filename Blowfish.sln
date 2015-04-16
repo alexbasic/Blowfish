@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NikonovAV.HM.BlowfishCrypt", "NikonovAV.HM.BlowfishCrypt.csproj", "{ECC06715-91B3-4953-8E0F-06D1EEF5757A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NikonovAV.HM.BlowfishCrypt", "Blowfish\NikonovAV.HM.BlowfishCrypt.csproj", "{ECC06715-91B3-4953-8E0F-06D1EEF5757A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NikonovAV.HM.BlowfishCrypt.Test", "..\Blowfish.Test\NikonovAV.HM.BlowfishCrypt.Test.csproj", "{C4534CF5-510B-4805-A2BA-18401AB3940E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NikonovAV.HM.BlowfishCrypt.Test", "Blowfish.Test\NikonovAV.HM.BlowfishCrypt.Test.csproj", "{C4534CF5-510B-4805-A2BA-18401AB3940E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NikonovAV.HM.Container", "..\NikonovAV.HM.Container\NikonovAV.HM.Container.csproj", "{14DE541C-0672-481E-A07C-5CD9B7AA64C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NikonovAV.HM.Container", "NikonovAV.HM.Container\NikonovAV.HM.Container.csproj", "{14DE541C-0672-481E-A07C-5CD9B7AA64C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NikonovAV.HM.Container.Test", "..\NikonovAV.HM.Container.Test\NikonovAV.HM.Container.Test.csproj", "{65ACD5A6-B872-4D00-A353-E631F8FD27B9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NikonovAV.HM.Container.Test", "NikonovAV.HM.Container.Test\NikonovAV.HM.Container.Test.csproj", "{65ACD5A6-B872-4D00-A353-E631F8FD27B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
