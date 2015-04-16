@@ -44,10 +44,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\NikonovAV.HM.Container\NikonovAV.HM.Container.csproj">
+    <ProjectReference Include="..\NikonovAV.HM.Container\NikonovAV.HM.Container.csproj">
       <Project>{14de541c-0672-481e-a07c-5cd9b7aa64c7}</Project>
       <Name>NikonovAV.HM.Container</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Blowfish\NikonovAV.HM.BlowfishCrypt.csproj">
+      <Project>{ecc06715-91b3-4953-8e0f-06d1eef5757a}</Project>
+      <Name>NikonovAV.HM.BlowfishCrypt</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
