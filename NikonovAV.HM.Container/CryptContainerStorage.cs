@@ -22,7 +22,7 @@ namespace NikonovAV.HM.Container
         {
             unpackedData = unpacked;
             containerData = container;
-            long sizeDestInBlocks = ((unpackedData.Length - 1) % BlockSize) + 1;
+            long sizeDestInBlocks = ((unpackedData.Length - 1) / BlockSize) + 1;
             containerData.SetLength((sizeDestInBlocks * BlockSize) + BlockSize);
             SizeDestInBlocks = sizeDestInBlocks;
         }

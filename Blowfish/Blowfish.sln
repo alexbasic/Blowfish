@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NikonovAV.HM.BlowfishCrypt.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NikonovAV.HM.Container", "..\NikonovAV.HM.Container\NikonovAV.HM.Container.csproj", "{14DE541C-0672-481E-A07C-5CD9B7AA64C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NikonovAV.HM.Container.Test", "NikonovAV.HM.Container.Test\NikonovAV.HM.Container.Test.csproj", "{65ACD5A6-B872-4D00-A353-E631F8FD27B9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NikonovAV.HM.Container.Test", "..\NikonovAV.HM.Container.Test\NikonovAV.HM.Container.Test.csproj", "{65ACD5A6-B872-4D00-A353-E631F8FD27B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
