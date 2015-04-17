@@ -81,5 +81,42 @@ namespace NikonovAV.HM.BlowfishCrypt.Test
                 Assert.IsTrue(dataArray[i] == originalDataArray[i]);
             }
         }
+
+        [TestMethod]
+        public void EncryptDecryptArray_KeyDoNotMutate()
+        {
+            #region init
+            int dataLength = 13107200;
+            ulong[] dataArray = new ulong[dataLength];
+            ulong[] originalDataArray = new ulong[dataLength];
+            int keyLength = 56;
+            byte[] key = new byte[keyLength];
+
+            Random rnd = new Random();
+            rnd.NextBytes(key);
+            byte[] originalKey = new byte[keyLength];
+            Array.Copy(key, originalKey, key.Length);
+            for (var i = 0; i < dataLength; i++)
+            {
+                uint r = (uint)rnd.Next();
+                ulong l = (uint)rnd.Next();
+                dataArray[i] = (l << 32) | r;
+                originalDataArray[i] = dataArray[i];
+            }
+            #endregion
+
+            Blowfish blowfish = new Blowfish(key);
+
+            blowfish.EncryptArray(dataArray);
+
+            Blowfish blowfish2 = new Blowfish(key);
+
+            blowfish2.DecryptArray(dataArray);
+
+            for (var i = 0; i < key.Length; i++)
+            {
+                Assert.IsTrue(key[i] == originalKey[i]);
+            }
+        }
     }
 }

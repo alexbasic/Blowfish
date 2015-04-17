@@ -12,25 +12,32 @@ namespace NikonovAV.HM.Container
     {
         private Stream containerData;
         private Stream unpackedData;
-        private Blowfish crypter;
+        private ICrypter _crypter;
 
-        public long SizeDestInBlocks { get; set; }
-        public long ContentSize { get; set; }
+        //public long SizeDestInBlocks { get; set; }
+        //public long ContentSize { get; set; }
         public int BlockSize { get { return 8; } }
 
-        public CryptContainerStorage(Stream unpacked, Stream container, Blowfish crypter = null)
+        public CryptContainerStorage(Stream unpacked, Stream container, ICrypter crypter)
         {
             unpackedData = unpacked;
             containerData = container;
-            long sizeDestInBlocks = ((unpackedData.Length - 1) / BlockSize) + 1;
-            containerData.SetLength((sizeDestInBlocks * BlockSize) + BlockSize);
-            SizeDestInBlocks = sizeDestInBlocks;
+            _crypter = crypter;
         }
 
         public void Pack()
         {
+            //TODO Усовершенствовать шифрование.
+            // Шифровать не весь поток после упаковки, а шифровать и производить упаковку блоками по 64 бита
+            //long sizeDestInBlocks = ((unpackedData.Length - 1) / BlockSize) + 1;
+            //containerData.SetLength((sizeDestInBlocks * BlockSize) + BlockSize);
+            //SizeDestInBlocks = sizeDestInBlocks;
+            containerData.Position = 0;
+            unpackedData.Position = 0;
             long unpackedDataSize = unpackedData.Length;
             int addsBytes = (int)(unpackedDataSize % (long)BlockSize);
+            byte[] buffer = LongToArray(unpackedDataSize);
+            containerData.Write(buffer, 0, 8);
             for (long i = 0; i < unpackedDataSize; i++)
             {
                 int buf = unpackedData.ReadByte();
@@ -41,29 +48,67 @@ namespace NikonovAV.HM.Container
             {
                 containerData.WriteByte(0);
             }
-            if (crypter != null)
+            if (_crypter != null)
             {
-                crypter.Encrypt(containerData);
+                _crypter.Encrypt(containerData);
             }
         }
 
         public void Extract()
         {
-            if (crypter != null)
+            //long sizeDestInBlocks = ((unpackedData.Length - 1) / BlockSize) + 1;
+            //SizeDestInBlocks = sizeDestInBlocks;
+
+            if (_crypter != null)
             {
-                crypter.Decrypt(containerData);
+                _crypter.Decrypt(containerData);
             }
             containerData.Position = 0;
             unpackedData.Position = 0;
             byte[] sizeVariable = new byte[8];
             containerData.Read(sizeVariable, 0, 8);
-            long unpackedDataSize = BitConverter.ToInt64(sizeVariable, 0);
+            long unpackedDataSize = ArrayToLong(sizeVariable);
             for (long i = 0; i < unpackedDataSize; i++)
             {
                 int buf = containerData.ReadByte();
 
                 unpackedData.WriteByte((byte)buf);
             }
+        }
+
+        private long ArrayToLong(byte[] longArrayValue)
+        {
+            long result =
+                (((long)longArrayValue[0]) << 56) |
+                (((long)longArrayValue[1]) << 48) |
+                (((long)longArrayValue[2]) << 40) |
+                (((long)longArrayValue[3]) << 32) |
+                (((long)longArrayValue[4]) << 24) |
+                (((long)longArrayValue[5]) << 16) |
+                (((long)longArrayValue[6]) << 8) |
+                (((long)longArrayValue[7]));
+            return result;
+        }
+
+        private byte[] LongToArray(long original)
+        {
+            byte[] result = new byte[8];
+            result[7] = (byte)(original & 0xFF);
+            original >>= 8;
+            result[6] = (byte)(original & 0xFF);
+            original >>= 8;
+            result[5] = (byte)(original & 0xFF);
+            original >>= 8;
+            result[4] = (byte)(original & 0xFF);
+            original >>= 8;
+            result[3] = (byte)(original & 0xFF);
+            original >>= 8;
+            result[2] = (byte)(original & 0xFF);
+            original >>= 8;
+            result[1] = (byte)(original & 0xFF);
+            original >>= 8;
+            result[0] = (byte)(original & 0xFF);
+            return result;
         }
     }
 }
