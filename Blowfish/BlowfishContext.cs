@@ -18,7 +18,7 @@ namespace NikonovAV.HM.BlowfishCrypt
         {
             if (key.Length > maxKeyLengthInBytes)
             {
-                throw new ArgumentException("Maximum key length should be 448 bit");
+                throw new ArgumentException(string.Format("Maximum key length should be {0} bit", maxKeyLengthInBytes));
             }
             Key = new byte[key.Length];
             Array.Copy(key, Key, key.Length);
@@ -28,7 +28,8 @@ namespace NikonovAV.HM.BlowfishCrypt
 
         private UInt32[] MakePKeys()
         {
-            UInt32[] result = Constants.PArray;
+            UInt32[] result = new UInt32[Constants.PArray.Length];
+            Array.Copy(Constants.PArray, result, Constants.PArray.Length);
             var keyLength = Key.Length;
             for (int i = 0, k = 0; i < 18; i++)
             {
@@ -51,10 +52,10 @@ namespace NikonovAV.HM.BlowfishCrypt
             SKeys[2] = new UInt32[256];
             SKeys[3] = new UInt32[256];
 
-            SKeys[0] = Constants.sbox0;
-            SKeys[1] = Constants.sbox1;
-            SKeys[2] = Constants.sbox2;
-            SKeys[3] = Constants.sbox3;
+            Array.Copy(Constants.sbox0, SKeys[0], Constants.sbox0.Length);
+            Array.Copy(Constants.sbox1, SKeys[1], Constants.sbox1.Length);
+            Array.Copy(Constants.sbox2, SKeys[2], Constants.sbox2.Length);
+            Array.Copy(Constants.sbox3, SKeys[3], Constants.sbox3.Length);
         }
     }
 }
